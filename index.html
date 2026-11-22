@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#ffe4ef" />
+  <title>Happy Birthday, Chitti! 💗</title>
+  <style>
+    :root{--pink:#ff78ad;--deep:#d94d88;--pale:#fff3f8;--ink:#793653}
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100vh;font-family:ui-rounded,"Trebuchet MS",system-ui,sans-serif;color:var(--ink);background:radial-gradient(circle at 15% 15%,#fff 0 2px,transparent 3px),linear-gradient(135deg,#fff2f8,#ffe0ed 55%,#fff5fa);overflow-x:hidden}
+    .sparkles{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+    .float{position:absolute;bottom:-60px;animation:rise linear infinite;opacity:.8;font-size:25px}
+    @keyframes rise{to{transform:translateY(-115vh) rotate(25deg);opacity:0}}
+    main{width:min(92%,680px);margin:34px auto 50px;position:relative}
+    .card{background:#ffffffd9;border:2px solid #fff;border-radius:30px;padding:clamp(22px,5vw,42px);text-align:center;box-shadow:0 18px 55px #d94d8820;backdrop-filter:blur(8px)}
+    .tag{display:inline-block;background:#ffe3ef;color:var(--deep);padding:8px 15px;border-radius:99px;font-size:.85rem;font-weight:800;letter-spacing:.04em}
+    h1{font-size:clamp(2.5rem,9vw,4.6rem);line-height:1.03;margin:18px 0 8px;color:#e65d98;text-shadow:2px 3px 0 #ffe0ed}
+    .subtitle{font-size:1.05rem;color:#a85d7e;margin:0 0 20px}
+    .cake{font-size:clamp(5rem,18vw,8rem);filter:drop-shadow(0 8px 5px #e65d9822);animation:bob 2s ease-in-out infinite}
+    @keyframes bob{50%{transform:translateY(-9px)}}
+    .hint{font-size:.94rem;color:#a85d7e;margin:10px 0 18px}
+    button{border:0;border-radius:999px;padding:14px 23px;font-size:1rem;font-weight:800;cursor:pointer;background:linear-gradient(135deg,#ff8fba,#f35e9d);color:white;box-shadow:0 8px 18px #ef70a54a;transition:transform .2s}
+    button:hover{transform:translateY(-2px) scale(1.02)}
+    .letter{display:none;text-align:left;margin:24px auto 0;max-width:520px;background:#fff5fa;border:1px dashed #f39abd;border-radius:22px;padding:22px;line-height:1.8;animation:pop .5s ease}
+    .letter.show{display:block}
+    @keyframes pop{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:none}}
+    .letter p{margin:0 0 12px}
+    .sign{text-align:right;color:#df5d96;font-weight:800}
+    .footer{margin-top:22px;font-size:.83rem;color:#bd7895}
+    .heart{display:inline-block;animation:beat 1s infinite}
+    @keyframes beat{50%{transform:scale(1.25)}}
+    .confetti{position:fixed;top:-20px;pointer-events:none;animation:fall 3.5s linear forwards;z-index:5}
+    @keyframes fall{to{transform:translateY(110vh) rotate(650deg);opacity:0}}
+    @media(max-width:420px){main{margin:18px auto 30px}.card{border-radius:24px}.letter{padding:17px}}
+  </style>
+</head>
+<body>
+  <div class="sparkles" id="sparkles"></div>
+  <main>
+    <section class="card">
+      <div class="tag">A little surprise made with love 🎀</div>
+      <h1>Happy Birthday,<br>Chitti!</h1>
+      <p class="subtitle">Today is all about you, your smile and your happiness 💗</p>
+      <div class="cake" aria-label="Birthday cake">🎂</div>
+      <p class="hint">I have a little message for you...</p>
+      <button id="openBtn">Open your surprise 💌</button>
+      <div class="letter" id="letter">
+        <p>Happy Birthday Chitti! 🥹❤️</p>
+        <p>Oyata jeewithe hamadama lassana dewalma labenna one. Oyage hama heenayakma hari yanna one. Hama dawasakma hina wela sathutin inna. You deserve all the love and happiness in this world. Keep smiling and shining always. 💕</p>
+        <p>Mn nathi lookeka unath, oya hemadamat sathutin inna one. Oyage hinaawa kawadawath nathi wenna epa. ❤️</p>
+        <p class="sign">Love you always! 🫶</p>
+      </div>
+      <div class="footer">Made with <span class="heart">♥</span> just for Chitti</div>
+    </section>
+  </main>
+  <script>
+    const sparkles=document.getElementById('sparkles');
+    const symbols=['💗','💕','🎀','✨','🌸'];
+    for(let i=0;i<22;i++){
+      const el=document.createElement('span');el.className='float';
+      el.textContent=symbols[i%symbols.length];
+      el.style.left=Math.random()*100+'%';
+      el.style.animationDuration=(9+Math.random()*10)+'s';
+      el.style.animationDelay=(-Math.random()*15)+'s';
+      el.style.fontSize=(16+Math.random()*18)+'px';
+      sparkles.appendChild(el);
+    }
+    function celebrate(){
+      for(let i=0;i<48;i++){
+        const el=document.createElement('span');el.className='confetti';
+        el.textContent=['💗','✨','🎀','🌸','💕'][Math.floor(Math.random()*5)];
+        el.style.left=Math.random()*100+'vw';
+        el.style.fontSize=(14+Math.random()*20)+'px';
+        el.style.animationDuration=(2.5+Math.random()*2)+'s';
+        document.body.appendChild(el);
+        setTimeout(()=>el.remove(),5000);
+      }
+    }
+    document.getElementById('openBtn').addEventListener('click',()=>{
+      document.getElementById('letter').classList.add('show');
+      document.getElementById('openBtn').textContent='A big hug for you! 💗';
+      celebrate();
+    });
+  </script>
+</body>
+</html>
